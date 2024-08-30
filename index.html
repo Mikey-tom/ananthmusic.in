@@ -5,6 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>அவள் என் உலகம்</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic styling for the modal */
+        .modal {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -13,10 +39,7 @@
         </header>
         <section class="audio-player">
             <h2>Listen to the Song</h2>
-            <audio controls autoplay>
-                <source src="AI Music-audio.mp3" type="audio/mpeg">
-                Your browser does not support the audio element or the audio file cannot be played.
-            </audio>
+            <button id="open-modal">Play Song</button>
         </section>
         <section class="lyrics">
             <h2>Lyrics</h2>
@@ -27,19 +50,7 @@
             <p>காதலும் நட்பும் இணைந்தால், நீயே என் நண்பனும் காதலனும்,<br>
             நீயின்றி வாழ்வு சோகம், உன் நிழலில் நான் உறவாடும்.</p>
             <p>நான் நினைக்கும் ஒவ்வொரு கணம், உன் நினைவுகளால் நிரம்பியிருக்கும்,<br>
-            உன் காதலில் என் வாழ்க்கை திளைக்கிறது, எப்போதும் நீயே என் உலகம்.</p>
-        </section>
-        <section class="gallery">
-            <h2>Gallery</h2>
-            <div class="image-container">
-                <img src="image1.jpg" alt="Love and Music">
-                <img src="image2.jpg" alt="Couple in Love">
-                <img src="image3.jpg" alt="Romantic Melody">
-            </div>
-        </section>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
+            உன் காதலில் என் வாழ்க்கை திளைக்கிறது, எப்போதும் நீயே என் உலகம்.<
+
 
 

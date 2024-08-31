@@ -1,34 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- Author: Eric Bidelman (ericbidelman@chromium.org) -->
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Player</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+  <title>Web Audio API: Simple load + play</title>
 </head>
 <body>
-    <div class="music-player">
-        <div class="cover">
-            <img src="cover-image.jpg" alt="Cover Art">
-        </div>
-        <div class="info">
-            <h2>Song Title</h2>
-            <h3>Artist Name</h3>
-        </div>
-        <audio id="audioPlayer" source src=""D:\my music\AI Music-audio (1) (1).mp3""></audio>
-        <div class="controls">
-            <button id="playPauseBtn">Play</button>
-            <input type="range" id="progressBar" value="0" max="100">
-            <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
-        </div>
-        <div id="lyrics">
-            <p>Line 1 of your lyrics...</p>
-            <p>Line 2 of your lyrics...</p>
-            <p>Line 3 of your lyrics...</p>
-            <!-- Add more lines as necessary -->
-        </div>
-    </div>
-    <script src="script.js"></script>
+  <p>Example of using the Web Audio API to load a sound file
+  and start playing on user-click.</p>
+  <input type="file"  name="audio-src" accept="audio/*">
+  <audio id="audio-ctr"> </audio>
+
+  <button onclick="playSound()" disabled>Start</button>
+  <button onclick="stopSound()" disabled>Stop</button>
+  
+<script>
+var context = new AudioContext();
+var source = null;
+var audioBuffer = null;
+var audio_ctr = document.getElementById("audio-ctr");
+
+function stopSound() {
+  if(source) {
+    source.stop();
+  }
+}
+
+function playSound() {
+  // source is global so we can call .noteOff() later.
+    
+ 
+  
+  audio_ctr.controls = true;
+     
+  source = context.createBufferSource();
+  source.buffer = audioBuffer;
+  source.loop = false;
+  source.connect(context.destination);
+  source.start(); // Play immediately.
+}
+
+
+function initSound(arrayBuffer) {
+  context.decodeAudioData(
+    arrayBuffer,
+    function (buffer) {
+     
+      audioBuffer = buffer;
+      var buttons = document.querySelectorAll("button");
+      buttons[0].disabled = false;
+      buttons[1].disabled = false;
+    },
+    function (e) {
+      console.log("Error decoding file", e);
+    }
+  );
+}
+
+// User selects file, read it as an ArrayBuffer and pass to the API.
+var fileInput = document.querySelector('input[type="file"]');
+fileInput.addEventListener(
+  "change",
+  function (e) {
+ 
+    var reader = new FileReader(); //src에 리더에 소스값 넣어보기
+    reader.onload = function (e) {
+     
+      initSound(this.result);
+     
+     
+    };
+    reader.readAsArrayBuffer(this.files[0]);
+  },
+  false
+);
+
+function loadSoundFile(url) {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", url, true);
+  xhr.responseType = "arraybuffer";
+  xhr.onload = function (e) {
+    initSound(this.response); // this.response is an ArrayBuffer.
+  };
+  xhr.send();
+}
+</script>
 </body>
 </html>
 

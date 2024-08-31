@@ -3,16 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lyrics Scroller</title>
+    <title>Music Player</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Lyrics Scroller with Music</h1>
-        <audio id="audioPlayer" controls>
-            <source src="audio/AI Music-audio.mpeg" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
+    <div class="music-player">
+        <div class="cover">
+            <img src="cover-image.jpg" alt="Cover Art">
+        </div>
+        <div class="info">
+            <h2>Song Title</h2>
+            <h3>Artist Name</h3>
+        </div>
+        <audio id="audioPlayer" src="/mnt/data/AI Music-audio (1) (1).mpeg"></audio>
+        <div class="controls">
+            <button id="playPauseBtn">Play</button>
+            <input type="range" id="progressBar" value="0" max="100">
+            <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+        </div>
         <div id="lyrics">
             <p>Line 1 of your lyrics...</p>
             <p>Line 2 of your lyrics...</p>
@@ -23,6 +31,7 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
 

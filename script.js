@@ -1,40 +1,23 @@
-<audio controls id="music">
+document.addEventListener('DOMContentLoaded', function () {
+    const audioPlayer = document.getElementById('audioPlayer');
+    const lyrics = document.querySelectorAll('#lyrics p');
 
-<source src="D:\my music\AI Music-audio (1) (1).mpeg" type="audio/mpeg">
+    // Timing (in seconds) for when each lyric line should appear
+    const lyricTimings = [0, 5, 10, 15]; // Adjust these values based on your lyrics and music
 
-Your browser does not support the audio element.
+    // Synchronize lyrics with audio
+    audioPlayer.addEventListener('timeupdate', function () {
+        const currentTime = audioPlayer.currentTime;
 
-</audio>
+        lyrics.forEach((line, index) => {
+            if (currentTime >= lyricTimings[index] && (index === lyricTimings.length - 1 || currentTime < lyricTimings[index + 1])) {
+                line.style.opacity = 1;
+                line.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                line.style.opacity = 0;
+            }
+        });
+    });
+});
 
- 
-
-<p>Click the buttons to play or pause the music.</p>
-
- 
-
-<button onclick="play()" type="button">Play </button>
-
-<button onclick="pause()" type="button">Pause</button>
-
- 
-
-<script>
-
-var myMusic= document.getElementById("music");
-
-function play() {
-
-myMusic.play();
-
-}
-
- 
-
-function pause() {
-
-myMusic.pause();
-
-}
-
-</script>
 

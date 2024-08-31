@@ -1,93 +1,82 @@
 <!DOCTYPE html>
-<!-- Author: Eric Bidelman (ericbidelman@chromium.org) -->
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-  <title>Web Audio API: Simple load + play</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music and Lyrics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .lyrics {
+            max-width: 600px;
+            margin: 20px auto;
+            line-height: 1.5;
+            overflow-y: scroll;
+            height: 300px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .highlight {
+            color: red;
+        }
+    </style>
 </head>
 <body>
-  <p>Example of using the Web Audio API to load a sound file
-  and start playing on user-click.</p>
-  <input type="file"  name="audio-src" accept="audio/*">
-  <audio id="audio-ctr"> </audio>
+    <audio id="audioPlayer" controls>
+        <source src="AI Music-audio (1) (1).mpeg" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
-  <button onclick="playSound()" disabled>Start</button>
-  <button onclick="stopSound()" disabled>Stop</button>
-  
-<script>
-var context = new AudioContext();
-var source = null;
-var audioBuffer = null;
-var audio_ctr = document.getElementById("audio-ctr");
+    <div class="lyrics" id="lyrics">
+        <p id="line1">விழிகள் மூடுகின்ற நிரலாகும் நேரம்</p>
+        <p id="line2">மனது ஒற்றை நிழலாகும் இரவும்</p>
+        <p id="line3">அன்பே என் உயிரே உன்னாலே ஓடும்</p>
+        <p id="line4">இன்று நம் கனவும் நிறைவாகுமோ</p>
+        <p id="line5">நெஞ்சம் துடிக்கும் எண்ணங்கள் உறங்கிட</p>
+        <p id="line6">நினைவுகள் சின்னமாய் நிழலிடும்</p>
+        <p id="line7">பூமியை விட்டே ஞாபகம் தொடரும்</p>
+        <p id="line8">உன்னுடன் என் பிரியமான தருணம்</p>
+        <p id="line9">என் இறுதி மூச்சிலே</p>
+        <p id="line10">நீயின்றி எதுவும் இல்லை</p>
+        <p id="line11">கல்லறையில் சாய்ந்தபின்</p>
+        <p id="line12">உன்னோடு என் காதலும்</p>
+        <p id="line13">நட்புப் போல என்றும் பிரியமாய்</p>
+        <p id="line14">வாழ்ந்ததற்கு நம் காதல் சாட்சியாய்</p>
+        <p id="line15">மண்ணில் நாம் சிதருவோம் ஒன்றாய்</p>
+        <p id="line16">வானில் நாம் பறப்போம் பாசமாய்</p>
+        <p id="line17">அகம் தொலைந்தால் நினைவில் நீயே</p>
+        <p id="line18">இமையை மூடிய நாள் வரையில்</p>
+        <p id="line19">உன்னை என் சுவாசமாக கடவுள்</p>
+        <p id="line20">என்றும் நம் காதல்   ஒருநாள்</p>
+        <p id="line21">மண்ணில் தான் எட்டினாலும் தூணில்</p>
+        <p id="line22">உன்னுடன் என் காதல் நிறைவாகும்</p>
+        <p id="line23">இல்லை இன்றும் தொடரும்</p>
+        <p id="line24">சொன்னாய் என் முதல் முதல் பார்த்தால்</p>
+    </div>
 
-function stopSound() {
-  if(source) {
-    source.stop();
-  }
-}
+    <script>
+        const audio = document.getElementById('audioPlayer');
+        const lyrics = document.getElementById('lyrics');
+        const lines = lyrics.getElementsByTagName('p');
 
-function playSound() {
-  // source is global so we can call .noteOff() later.
-    
- 
-  
-  audio_ctr.controls = true;
-     
-  source = context.createBufferSource();
-  source.buffer = audioBuffer;
-  source.loop = false;
-  source.connect(context.destination);
-  source.start(); // Play immediately.
-}
+        // Timing for each line in seconds (you need to adjust this to fit your audio)
+        const timings = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115];
 
-
-function initSound(arrayBuffer) {
-  context.decodeAudioData(
-    arrayBuffer,
-    function (buffer) {
-     
-      audioBuffer = buffer;
-      var buttons = document.querySelectorAll("button");
-      buttons[0].disabled = false;
-      buttons[1].disabled = false;
-    },
-    function (e) {
-      console.log("Error decoding file", e);
-    }
-  );
-}
-
-// User selects file, read it as an ArrayBuffer and pass to the API.
-var fileInput = document.querySelector('input[type="file"]');
-fileInput.addEventListener(
-  "change",
-  function (e) {
- 
-    var reader = new FileReader(); //src에 리더에 소스값 넣어보기
-    reader.onload = function (e) {
-     
-      initSound(this.result);
-     
-     
-    };
-    reader.readAsArrayBuffer(this.files[0]);
-  },
-  false
-);
-
-function loadSoundFile(url) {
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", url, true);
-  xhr.responseType = "arraybuffer";
-  xhr.onload = function (e) {
-    initSound(this.response); // this.response is an ArrayBuffer.
-  };
-  xhr.send();
-}
-</script>
+        audio.addEventListener('timeupdate', function () {
+            for (let i = 0; i < lines.length; i++) {
+                if (audio.currentTime >= timings[i] && (i === lines.length - 1 || audio.currentTime < timings[i + 1])) {
+                    lines[i].classList.add('highlight');
+                    lines[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    lines[i].classList.remove('highlight');
+                }
+            }
+        });
+    </script>
 </body>
 </html>
+
 
 
 

@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #121212;
+    background-color: #1e1e1e;
     color: #fff;
     display: flex;
     justify-content: center;
@@ -10,35 +10,48 @@ body {
 }
 
 .music-player {
-    background-color: #282828;
-    border-radius: 15px;
+    background-color: #292929;
+    border-radius: 20px;
     padding: 20px;
-    max-width: 500px;
+    max-width: 400px;
     width: 100%;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.player-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .cover img {
-    width: 100%;
+    width: 120px;
+    height: 120px;
     border-radius: 10px;
+    object-fit: cover;
+}
+
+.info {
+    margin-left: 20px;
 }
 
 .info h2 {
     font-size: 1.5em;
-    margin: 10px 0;
+    margin: 0;
 }
 
 .info h3 {
-    font-size: 1em;
+    font-size: 1.2em;
     color: #b3b3b3;
 }
 
 .controls {
-    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
-button {
+.control-btn {
     background-color: #1db954;
     border: none;
     padding: 10px 20px;
@@ -49,22 +62,41 @@ button {
     margin: 5px;
 }
 
-button#loopBtn.active {
+.control-btn#loopBtn.active {
     background-color: #ff0000;
 }
 
-#progressBar, #volumeControl {
+.progress-container {
+    margin-bottom: 20px;
+}
+
+#progressBar {
     width: 100%;
-    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.time-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.volume-container {
+    margin-bottom: 10px;
+}
+
+#volumeControl {
+    width: 100%;
+}
+
+.playback-speed {
+    margin-bottom: 20px;
 }
 
 #playbackSpeed {
-    margin-top: 10px;
-    padding: 5px;
+    width: 100%;
 }
 
 #lyrics {
-    margin-top: 20px;
     max-height: 200px;
     overflow-y: auto;
     text-align: left;
@@ -74,6 +106,7 @@ button#loopBtn.active {
     margin: 5px 0;
     line-height: 1.6;
 }
+
 
 
 

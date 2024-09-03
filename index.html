@@ -1,82 +1,57 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music and Lyrics</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .lyrics {
-            max-width: 600px;
-            margin: 20px auto;
-            line-height: 1.5;
-            overflow-y: scroll;
-            height: 300px;
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-        .highlight {
-            color: red;
-        }
-    </style>
+    <title>Auto Scrolling Lyrics</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <audio id="audioPlayer" controls>
-        <source src="AI Music-audio (1) (1).mpeg" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
-    <div class="lyrics" id="lyrics">
-        <p id="line1">விழிகள் மூடுகின்ற நிரலாகும் நேரம்</p>
-        <p id="line2">மனது ஒற்றை நிழலாகும் இரவும்</p>
-        <p id="line3">அன்பே என் உயிரே உன்னாலே ஓடும்</p>
-        <p id="line4">இன்று நம் கனவும் நிறைவாகுமோ</p>
-        <p id="line5">நெஞ்சம் துடிக்கும் எண்ணங்கள் உறங்கிட</p>
-        <p id="line6">நினைவுகள் சின்னமாய் நிழலிடும்</p>
-        <p id="line7">பூமியை விட்டே ஞாபகம் தொடரும்</p>
-        <p id="line8">உன்னுடன் என் பிரியமான தருணம்</p>
-        <p id="line9">என் இறுதி மூச்சிலே</p>
-        <p id="line10">நீயின்றி எதுவும் இல்லை</p>
-        <p id="line11">கல்லறையில் சாய்ந்தபின்</p>
-        <p id="line12">உன்னோடு என் காதலும்</p>
-        <p id="line13">நட்புப் போல என்றும் பிரியமாய்</p>
-        <p id="line14">வாழ்ந்ததற்கு நம் காதல் சாட்சியாய்</p>
-        <p id="line15">மண்ணில் நாம் சிதருவோம் ஒன்றாய்</p>
-        <p id="line16">வானில் நாம் பறப்போம் பாசமாய்</p>
-        <p id="line17">அகம் தொலைந்தால் நினைவில் நீயே</p>
-        <p id="line18">இமையை மூடிய நாள் வரையில்</p>
-        <p id="line19">உன்னை என் சுவாசமாக கடவுள்</p>
-        <p id="line20">என்றும் நம் காதல்   ஒருநாள்</p>
-        <p id="line21">மண்ணில் தான் எட்டினாலும் தூணில்</p>
-        <p id="line22">உன்னுடன் என் காதல் நிறைவாகும்</p>
-        <p id="line23">இல்லை இன்றும் தொடரும்</p>
-        <p id="line24">சொன்னாய் என் முதல் முதல் பார்த்தால்</p>
+    <div class="lyrics-container">
+        <div class="lyrics">
+            <p>Kadhal talk-u, night-u peak-u,</p>
+            <p>Pesi pesi soodukaadu aachu.</p>
+            <p>Cat-u talk-u, moon walk-u,</p>
+            <p>Avala paathu ehlam poochu.</p>
+            <p>Un kannadiyil naan, ennai thedi ponene,</p>
+            <p>Kannodu kannin vishayam theriyuma?</p>
+            <p>Un mazhaiyil naan, kaatrai thedi nadandhen,</p>
+            <p>Kattrin oram, kadhalin moham.</p>
+            <p>Hey, raathiri raathiri radhai,</p>
+            <p>Enakku ipo venum bodhai.</p>
+            <p>Takkaru takkaru damaaru,</p>
+            <p>Nee illama naanum sumaaru.</p>
+            <p>Oru vaarthai sol, naan vaazhven,</p>
+            <p>Oru silu silu vaarthai vaangi,</p>
+            <p>Kadhal ariven.</p>
+            <p>Podi podi paava kaari,</p>
+            <p>Nee thaane enakku sooniya kaari.</p>
+            <p>Right-u wrong-u, queen-u pei-u,</p>
+            <p>Unna paatha alaeyh gaali</p>
+            <p>Nee vanthaal, mazhalai paadum,</p>
+            <p>Thunaiyaaga naan, un mela nenaipen thooral.</p>
+            <p>Mannippu thedi, marandhaalum,</p>
+            <p>Thirumbum vazhi illaye.</p>
+            <p>Hey, raathiri raathiri radhai,</p>
+            <p>Enakku ipo venum bodhai.</p>
+            <p>Takkaru takkaru damaaru,</p>
+            <p>Nee illama naanum sumaaru</p>
+            <p>Hey, raathiri raathiri radhai,</p>
+            <p>Enakku ipo venum bodhai.</p>
+            <p>Takkaru takkaru damaaru,</p>
+            <p>Nee illama naanum sumaaru.</p>
+            <p>Hey! Pencil lady, naa valakkuren thaadi,</p>
+            <p>Unnala aanen, eh ipo naanum KD.</p>
+            <p>Suthi vita bhambaram, kairu illaa thadhiram...</p>
+            <p>Hey! Takkaru takkaru damaaru,</p>
+            <p>Nee illama naanum sumaaru.</p>
+        </div>
     </div>
-
-    <script>
-        const audio = document.getElementById('audioPlayer');
-        const lyrics = document.getElementById('lyrics');
-        const lines = lyrics.getElementsByTagName('p');
-
-        // Timing for each line in seconds (you need to adjust this to fit your audio)
-        const timings = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115];
-
-        audio.addEventListener('timeupdate', function () {
-            for (let i = 0; i < lines.length; i++) {
-                if (audio.currentTime >= timings[i] && (i === lines.length - 1 || audio.currentTime < timings[i + 1])) {
-                    lines[i].classList.add('highlight');
-                    lines[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
-                } else {
-                    lines[i].classList.remove('highlight');
-                }
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
-
 
 
 

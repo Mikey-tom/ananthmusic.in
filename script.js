@@ -1,25 +1,63 @@
 document.addEventListener('DOMContentLoaded', function () {
     const audioPlayer = document.getElementById('audioPlayer');
     const playPauseBtn = document.getElementById('playPauseBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const loopBtn = document.getElementById('loopBtn');
-    const likeBtn = document.getElementById('likeBtn');
-    const likeCountElem = document.getElementById('likeCount');
-    const volumeControl = document.getElementById('volumeControl');
     const progressBar = document.getElementById('progressBar');
     const currentTimeElem = document.getElementById('currentTime');
     const durationElem = document.getElementById('duration');
+    const volumeControl = document.getElementById('volumeControl');
     const playbackSpeed = document.getElementById('playbackSpeed');
-    const downloadBtn = document.getElementById('downloadBtn');
     const lyricsContainer = document.getElementById('lyrics');
 
     let isPlaying = false;
-    let isLooping = false;
-    let likeCount = 0;
 
-    // Lyrics data
-    const lyricsData = [
+    // Play/Pause functionality
+    playPauseBtn.addEventListener('click', function () {
+        if (isPlaying) {
+            audioPlayer.pause();
+            playPauseBtn.textContent = 'Play';
+        } else {
+            audioPlayer.play();
+            playPauseBtn.textContent = 'Pause';
+        }
+        isPlaying = !isPlaying;
+    });
+
+    // Update the progress bar and time
+    audioPlayer.addEventListener('timeupdate', function () {
+        const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        progressBar.value = progress;
+
+        currentTimeElem.textContent = formatTime(audioPlayer.currentTime);
+        durationElem.textContent = formatTime(audioPlayer.duration);
+
+        syncLyrics(audioPlayer.currentTime);
+    });
+
+    // Handle progress bar changes
+    progressBar.addEventListener('input', function () {
+        const newTime = (progressBar.value / 100) * audioPlayer.duration;
+        audioPlayer.currentTime = newTime;
+    });
+
+    // Handle volume control
+    volumeControl.addEventListener('input', function () {
+        audioPlayer.volume = volumeControl.value / 100;
+    });
+
+    // Handle playback speed
+    playbackSpeed.addEventListener('change', function () {
+        audioPlayer.playbackRate = parseFloat(playbackSpeed.value);
+    });
+
+    // Format time to mm:ss
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    // Lyrics with timings
+    const lyrics = [
         { time: 0, text: "Kadhal talk-u, night-u peak-u," },
         { time: 5, text: "Pesi pesi sudukadu aacho." },
         { time: 10, text: "Cat-u talk-u, moon walk-u," },
@@ -46,16 +84,34 @@ document.addEventListener('DOMContentLoaded', function () {
         { time: 115, text: "Hey, raathiri raathiri radhai," },
         { time: 120, text: "Enakku ipo venum bodhai." },
         { time: 125, text: "Takkaru takkaru damaaru," },
-        { time: 130, text: "Nee illama naanum sumaaru." },
+        { time: 130, text: "Nee illama naanum sumaaru" },
         { time: 135, text: "Hey! Pencil lady, naa valakkuren thaadi," },
         { time: 140, text: "Unnala aanen, eh ipo naanum KD." },
         { time: 145, text: "Suthi vita bhambaram, kairu illaa thadhiram..." },
         { time: 150, text: "Hey! Takkaru takkaru damaaru," },
-        { time: 155, text: "Nee illama naanum sumaaru." }
+        { time: 155, text: "Nee illama naanum sumaaru." },
     ];
 
     // Add lyrics to the container
-    lyricsData.forEach(item => {
-       
+    function addLyrics() {
+        lyricsContainer.innerHTML = lyrics.map(line => `<p>${line.text}</p>`).join('');
+    }
+
+    addLyrics();
+
+    // Sync lyrics with audio time
+    function syncLyrics(currentTime) {
+        lyrics.forEach((line, index) => {
+            const lyricElement = lyricsContainer.children[index];
+            if (currentTime >= line.time && (index === lyrics.length - 1 || currentTime < lyrics[index + 1].time)) {
+                lyricElement.style.color = '#1db954';
+                lyricElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                lyricElement.style.color = '#fff';
+            }
+        });
+    }
+});
+
 
 

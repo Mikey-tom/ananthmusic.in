@@ -1,39 +1,71 @@
-/* styles.css */
-
-/* Basic styling */
 body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     margin: 0;
-    padding: 0;
-    overflow: hidden;
-    transition: background-color 1s ease; /* Smooth background color transition */
-    background-color: #000; /* Default background color */
 }
 
-#musicPlayer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+.music-player {
+    background-color: #282828;
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
-audio {
-    margin-bottom: 20px;
+.cover img {
+    width: 100%;
+    border-radius: 10px;
 }
 
-#lyricsContainer {
-    color: #000; /* Black text color */
-    font-size: 24px;
-    animation: glowing 1s ease-in-out infinite;
+.info h2 {
+    font-size: 1.5em;
+    margin: 10px 0;
 }
 
-/* Glowing text effect */
-@keyframes glowing {
-    0% { text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FF0, 0 0 20px #FF0, 0 0 25px #FF0, 0 0 30px #FF0, 0 0 35px #FF0; }
-    50% { text-shadow: 0 0 10px #FFF, 0 0 20px #FFF, 0 0 30px #F00, 0 0 40px #F00, 0 0 50px #F00, 0 0 60px #F00, 0 0 70px #F00; }
-    100% { text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FF0, 0 0 20px #FF0, 0 0 25px #FF0, 0 0 30px #FF0, 0 0 35px #FF0; }
+.info h3 {
+    font-size: 1em;
+    color: #b3b3b3;
 }
+
+.controls {
+    margin-top: 20px;
+}
+
+#playPauseBtn {
+    background-color: #1db954;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+#progressBar {
+    width: 100%;
+    margin-top: 10px;
+}
+
+#lyrics {
+    margin-top: 20px;
+    max-height: 200px;
+    overflow-y: auto;
+    text-align: left;
+}
+
+#lyrics p {
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
 
 
 

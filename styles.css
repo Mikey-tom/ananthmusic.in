@@ -5,8 +5,8 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #000; /* Black background */
     transition: background-color 1s ease; /* Smooth background color transition */
+    background-color: #000; /* Default background color */
 }
 
 #musicPlayer {
@@ -16,8 +16,6 @@ body {
     justify-content: center;
     height: 100vh;
     text-align: center;
-    position: relative;
-    overflow: hidden; /* Hide overflow for scrolling effect */
 }
 
 audio {
@@ -25,30 +23,17 @@ audio {
 }
 
 #lyricsContainer {
-    color: #FFF; /* White text color */
+    color: #000; /* Black text color */
     font-size: 24px;
-    position: absolute;
-    width: 100%;
-    bottom: 0; /* Start at the bottom of the container */
-    animation: scrolling 20s linear infinite; /* Adjust duration to control speed */
-    text-align: center; /* Center align text */
+    animation: glowing 1s ease-in-out infinite;
 }
 
 /* Glowing text effect */
 @keyframes glowing {
-    0% { text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #FFF, 0 0 25px #FFF, 0 0 30px #FFF; }
-    50% { text-shadow: 0 0 10px #FFF, 0 0 20px #FFF, 0 0 30px #FFF, 0 0 40px #FFF, 0 0 50px #FFF, 0 0 60px #FFF; }
-    100% { text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #FFF, 0 0 25px #FFF, 0 0 30px #FFF; }
+    0% { text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FF0, 0 0 20px #FF0, 0 0 25px #FF0, 0 0 30px #FF0, 0 0 35px #FF0; }
+    50% { text-shadow: 0 0 10px #FFF, 0 0 20px #FFF, 0 0 30px #F00, 0 0 40px #F00, 0 0 50px #F00, 0 0 60px #F00, 0 0 70px #F00; }
+    100% { text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FF0, 0 0 20px #FF0, 0 0 25px #FF0, 0 0 30px #FF0, 0 0 35px #FF0; }
 }
 
-/* Scrolling effect */
-@keyframes scrolling {
-    0% {
-        transform: translateY(100%); /* Start off-screen */
-    }
-    100% {
-        transform: translateY(-100%); /* End off-screen */
-    }
-}
 
 

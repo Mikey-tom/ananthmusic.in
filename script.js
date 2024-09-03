@@ -6,21 +6,38 @@ const body = document.body;
 
 // Define the lyrics with timestamps and associated colors
 const lyrics = [
-    { time: 0, text: "Kadhal talk-u, night-u peak-u,\nPesi pesi soodukaadu aachu.", color: "#FFB6C1" }, // Light pink
-    { time: 4, text: "Cat-u talk-u, moon walk-u,\nAvala paathu ehlam poochu.", color: "#FFCCCB" }, // Light red
-    { time: 8, text: "Un kannadiyil naan, ennai thedi ponene,\nKannodu kannin vishayam theriyuma?", color: "#FFDDC1" }, // Light peach
-    { time: 12, text: "Un mazhaiyil naan, kaatrai thedi nadandhen,\nKattrin oram, kadhalin moham.", color: "#FFDAB9" }, // Peach puff
-    { time: 16, text: "Hey, raathiri raathiri radhai,\nEnakku ipo venum bodhai.", color: "#E0FFFF" }, // Light cyan
-    { time: 20, text: "Takkaru takkaru damaaru,\nNee illama naanum sumaaru.", color: "#E6E6FA" }, // Lavender
-    { time: 24, text: "Oru vaarthai sol, naan vaazhven,\nOru silu silu vaarthai vaangi,\nKadhal ariven.", color: "#F0E68C" }, // Khaki
-    { time: 28, text: "Podi podi paava kaari,\nNee thaane enakku sooniya kaari.", color: "#FFFACD" }, // Lemon chiffon
-    { time: 32, text: "Right-u wrong-u, queen-u pei-u,\nUnna paatha alaeyh gaali", color: "#FFB6C1" },
-    { time: 36, text: "Nee vanthaal, mazhalai paadum,\nThunaiyaaga naan, un mela nenaipen thooral.", color: "#FFCCCB" },
-    { time: 40, text: "Mannippu thedi, marandhaalum,\nThirumbum vazhi illaye.", color: "#FFDDC1" },
-    { time: 44, text: "Hey, raathiri raathiri radhai,\nEnakku ipo venum bodhai.", color: "#FFDAB9" },
-    { time: 48, text: "Takkaru takkaru damaaru,\nNee illama naanum sumaaru", color: "#E0FFFF" },
-    { time: 52, text: "Hey! Pencil lady, naa valakkuren thaadi,\nUnnala aanen, eh ipo naanum KD.", color: "#E6E6FA" },
-    { time: 56, text: "Suthi vita bhambaram, kairu illaa thadhiram...\nHey! Takkaru takkaru damaaru,\nNee illama naanum sumaaru.", color: "#F0E68C" }
+    { time: 0, text: "Kadhal talk-u, night-u peak-u,", color: "#FFB6C1" }, // Light pink
+    { time: 6, text: "Pesi pesi soodukaadu aachu.", color: "#FFCCCB" }, // Light red
+    { time: 12, text: "Cat-u talk-u, moon walk-u,", color: "#FFDDC1" }, // Light peach
+    { time: 16, text: "Avala paathu ehlam poochu.", color: "#FFDAB9" }, // Peach puff
+    { time: 20, text: "Un kannadiyil naan, ennai thedi ponene,", color: "#E0FFFF" }, // Light cyan
+    { time: 24, text: "Kannodu kannin vishayam theriyuma?", color: "#E6E6FA" }, // Lavender
+    { time: 26, text: "Un mazhaiyil naan, kaatrai thedi nadandhen,", color: "#F0E68C" }, // Khaki
+    { time: 32, text: "Kattrin oram, kadhalin moham.", color: "#FFFACD" }, // Lemon chiffon
+    { time: 36, text: "Hey, raathiri raathiri radhai,", color: "#FFB6C1" }, // Light pink
+    { time: 38, text: "Enakku ipo venum bodhai.", color: "#FFCCCB" }, // Light red
+    { time: 42, text: "Takkaru takkaru damaaru,", color: "#FFDDC1" }, // Light peach
+    { time: 46, text: "Nee illama naanum sumaaru.", color: "#FFDAB9" }, // Peach puff
+    { time: 48, text: "Oru vaarthai sol, naan vaazhven,", color: "#E0FFFF" }, // Light cyan
+    { time: 52, text: "Oru silu silu vaarthai vaangi,", color: "#E6E6FA" }, // Lavender
+    { time: 56, text: "Kadhal ariven.", color: "#F0E68C" }, // Khaki
+    { time: 60, text: "Podi podi paava kaari,", color: "#FFFACD" }, // Lemon chiffon
+    { time: 64, text: "Nee thaane enakku sooniya kaari.", color: "#FFB6C1" }, // Light pink
+    { time: 68, text: "Right-u wrong-u, queen-u pei-u,", color: "#FFCCCB" }, // Light red
+    { time: 72, text: "Unna paatha alaeyh gaali", color: "#FFDDC1" }, // Light peach
+    { time: 76, text: "Nee vanthaal, mazhalai paadum,", color: "#FFDAB9" }, // Peach puff
+    { time: 80, text: "Thunaiyaaga naan, un mela nenaipen thooral.", color: "#E0FFFF" }, // Light cyan
+    { time: 84, text: "Mannippu thedi, marandhaalum,", color: "#E6E6FA" }, // Lavender
+    { time: 88, text: "Thirumbum vazhi illaye.", color: "#F0E68C" }, // Khaki
+    { time: 92, text: "Hey, raathiri raathiri radhai,", color: "#FFFACD" }, // Lemon chiffon
+    { time: 96, text: "Enakku ipo venum bodhai.", color: "#FFB6C1" }, // Light pink
+    { time: 100, text: "Takkaru takkaru damaaru,", color: "#FFCCCB" }, // Light red
+    { time: 104, text: "Nee illama naanum sumaaru", color: "#FFDDC1" }, // Light peach
+    { time: 108, text: "Hey! Pencil lady, naa valakkuren thaadi,", color: "#FFDAB9" }, // Peach puff
+    { time: 112, text: "Unnala aanen, eh ipo naanum KD.", color: "#E0FFFF" }, // Light cyan
+    { time: 116, text: "Suthi vita bhambaram, kairu illaa thadhiram...", color: "#E6E6FA" }, // Lavender
+    { time: 120, text: "Hey! Takkaru takkaru damaaru,", color: "#F0E68C" }, // Khaki
+    { time: 124, text: "Nee illama naanum sumaaru.", color: "#FFFACD" } // Lemon chiffon
 ];
 
 let currentLyricIndex = -1;
@@ -50,6 +67,7 @@ function onTimeUpdate() {
 audioPlayer.addEventListener('play', () => {
     requestAnimationFrame(onTimeUpdate);
 });
+
 
 
 

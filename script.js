@@ -1,75 +1,61 @@
-// script.js
 
-const audioPlayer = document.getElementById('audioPlayer');
-const lyricsContainer = document.getElementById('lyricsContainer');
-const body = document.body;
 
-// Define the lyrics with timestamps and associated colors
-const lyrics = [
-    { time: 0, text: "Kadhal talk-u, night-u peak-u,", color: "#FFB6C1" }, // Light pink
-    { time: 4, text: "Pesi pesi soodukaadu aachu.", color: "#FFCCCB" }, // Light red
-    { time: 8, text: "Cat-u talk-u, moon walk-u,", color: "#FFDDC1" }, // Light peach
-    { time: 12, text: "Avala paathu ehlam poochu.", color: "#FFDAB9" }, // Peach puff
-    { time: 16, text: "Un kannadiyil naan, ennai thedi ponene,", color: "#E0FFFF" }, // Light cyan
-    { time: 20, text: "Kannodu kannin vishayam theriyuma?", color: "#E6E6FA" }, // Lavender
-    { time: 24, text: "Un mazhaiyil naan, kaatrai thedi nadandhen,", color: "#F0E68C" }, // Khaki
-    { time: 28, text: "Kattrin oram, kadhalin moham.", color: "#FFFACD" }, // Lemon chiffon
-    { time: 32, text: "Hey, raathiri raathiri radhai,", color: "#FFB6C1" },
-    { time: 36, text: "Enakku ipo venum bodhai.", color: "#FFCCCB" },
-    { time: 40, text: "Takkaru takkaru damaaru,", color: "#FFDDC1" },
-    { time: 44, text: "Nee illama naanum sumaaru.", color: "#FFDAB9" },
-    { time: 48, text: "Oru vaarthai sol, naan vaazhven,", color: "#E0FFFF" },
-    { time: 52, text: "Oru silu silu vaarthai vaangi,", color: "#E6E6FA" },
-    { time: 56, text: "Kadhal ariven.", color: "#F0E68C" },
-    { time: 60, text: "Podi podi paava kaari,", color: "#FFFACD" },
-    { time: 64, text: "Nee thaane enakku sooniya kaari.", color: "#FFB6C1" },
-    { time: 68, text: "Right-u wrong-u, queen-u pei-u,", color: "#FFCCCB" },
-    { time: 72, text: "Unna paatha alaeyh gaali", color: "#FFDDC1" },
-    { time: 76, text: "Nee vanthaal, mazhalai paadum,", color: "#FFDAB9" },
-    { time: 80, text: "Thunaiyaaga naan, un mela nenaipen thooral.", color: "#E0FFFF" },
-    { time: 84, text: "Mannippu thedi, marandhaalum,", color: "#E6E6FA" },
-    { time: 88, text: "Thirumbum vazhi illaye.", color: "#F0E68C" },
-    { time: 92, text: "Hey, raathiri raathiri radhai,", color: "#FFFACD" },
-    { time: 96, text: "Enakku ipo venum bodhai.", color: "#FFB6C1" },
-    { time: 100, text: "Takkaru takkaru damaaru,", color: "#FFCCCB" },
-    { time: 104, text: "Nee illama naanum sumaaru", color: "#FFDDC1" },
-    { time: 108, text: "Hey! Pencil lady, naa valakkuren thaadi,", color: "#FFDAB9" },
-    { time: 112, text: "Unnala aanen, eh ipo naanum KD.", color: "#E0FFFF" },
-    { time: 116, text: "Suthi vita bhambaram, kairu illaa thadhiram...", color: "#E6E6FA" },
-    { time: 120, text: "Hey! Takkaru takkaru damaaru,", color: "#F0E68C" },
-    { time: 124, text: "Nee illama naanum sumaaru.", color: "#FFFACD" }
-];
 
-let currentLyricIndex = -1;
 
-function updateLyricsAndColor() {
-    const currentTime = audioPlayer.currentTime;
+document.addEventListener('DOMContentLoaded', function () {
+    const audioPlayer = document.getElementById('audioPlayer');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const progressBar = document.getElementById('progressBar');
+    const currentTimeElem = document.getElementById('currentTime');
+    const durationElem = document.getElementById('duration');
+    const lyrics = document.querySelectorAll('#lyrics p');
 
-    // Find the current lyric line
-    const newLyricIndex = lyrics.findIndex(lyric => lyric.time > currentTime);
+    let isPlaying = false;
 
-    // Update lyrics if the lyric index has changed
-    if (newLyricIndex > 0 && newLyricIndex !== currentLyricIndex) {
-        const currentLyric = lyrics[newLyricIndex - 1];
-        lyricsContainer.textContent = currentLyric.text;
-        body.style.backgroundColor = currentLyric.color;
-        currentLyricIndex = newLyricIndex - 1; // Update current index
+    // Play/Pause functionality
+    playPauseBtn.addEventListener('click', function () {
+        if (isPlaying) {
+            audioPlayer.pause();
+            playPauseBtn.textContent = 'Play';
+        } else {
+            audioPlayer.play();
+            playPauseBtn.textContent = 'Pause';
+        }
+        isPlaying = !isPlaying;
+    });
+
+    // Update the progress bar and time
+    audioPlayer.addEventListener('timeupdate', function () {
+        const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        progressBar.value = progress;
+
+        currentTimeElem.textContent = formatTime(audioPlayer.currentTime);
+        durationElem.textContent = formatTime(audioPlayer.duration);
+
+        syncLyrics(audioPlayer.currentTime);
+    });
+
+    // Sync lyrics with audio time
+    const lyricTimings = [0, 5, 10, 15]; // Adjust timings according to your lyrics
+
+    function syncLyrics(currentTime) {
+        lyrics.forEach((line, index) => {
+            if (currentTime >= lyricTimings[index] && (index === lyricTimings.length - 1 || currentTime < lyricTimings[index + 1])) {
+                line.style.color = '#1db954';
+                line.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                line.style.color = '#fff';
+            }
+        });
     }
-}
 
-// Use requestAnimationFrame for smoother updates
-function onTimeUpdate() {
-    updateLyricsAndColor();
-    requestAnimationFrame(onTimeUpdate);
-}
-
-// Event listener to update lyrics and color during playback
-audioPlayer.addEventListener('play', () => {
-    requestAnimationFrame(onTimeUpdate);
+    // Format time to mm:ss
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+    }
 });
-
-
-
 
 
 

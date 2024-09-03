@@ -1,6 +1,3 @@
-
-
-
 document.addEventListener('DOMContentLoaded', function () {
     const audioPlayer = document.getElementById('audioPlayer');
     const playPauseBtn = document.getElementById('playPauseBtn');
@@ -59,38 +56,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Add lyrics to the container
     lyricsData.forEach(item => {
-        const p = document.createElement('p');
-        p.textContent = item.text;
-        lyricsContainer.appendChild(p);
-    });
-
-    // Play/Pause functionality
-    playPauseBtn.addEventListener('click', function () {
-        if (isPlaying) {
-            audioPlayer.pause();
-            playPauseBtn.textContent = 'Play';
-        } else {
-            audioPlayer.play();
-            playPauseBtn.textContent = 'Pause';
-        }
-        isPlaying = !isPlaying;
-    });
-
-    // Previous and Next functionality
-    prevBtn.addEventListener('click', function () {
-        // Logic to play the previous track
-    });
-
-    nextBtn.addEventListener('click', function () {
-        // Logic to play the next track
-    });
-
-    // Loop functionality
-    loopBtn.addEventListener('
-
-
-
-
-
-
-
+       

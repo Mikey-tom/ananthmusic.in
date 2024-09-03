@@ -3,7 +3,7 @@
 const audioPlayer = document.getElementById('audioPlayer');
 const lyricsContainer = document.getElementById('lyricsContainer');
 const body = document.body;
-
+const alltextclour"black":
 // Define the lyrics with timestamps and associated colors
 const lyrics = [
     { time: 0, text: "Kadhal talk-u, night-u peak-u,", color: "#FFB6C1" }, // Light pink

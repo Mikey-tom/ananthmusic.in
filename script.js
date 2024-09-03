@@ -1,21 +1,68 @@
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const audioPlayer = document.getElementById('audioPlayer');
     const playPauseBtn = document.getElementById('playPauseBtn');
-    const progressBar = document.getElementById('progressBar');
-    const volumeControl = document.getElementById('volumeControl');
-    const currentTimeElem = document.getElementById('currentTime');
-    const durationElem = document.getElementById('duration');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const loopBtn = document.getElementById('loopBtn');
     const likeBtn = document.getElementById('likeBtn');
     const likeCountElem = document.getElementById('likeCount');
+    const volumeControl = document.getElementById('volumeControl');
+    const progressBar = document.getElementById('progressBar');
+    const currentTimeElem = document.getElementById('currentTime');
+    const durationElem = document.getElementById('duration');
+    const playbackSpeed = document.getElementById('playbackSpeed');
     const downloadBtn = document.getElementById('downloadBtn');
-    const loopBtn = document.getElementById('loopBtn');
-    const speedBtn = document.getElementById('speedBtn');
-    const lyrics = document.querySelectorAll('#lyrics p');
+    const lyricsContainer = document.getElementById('lyrics');
 
     let isPlaying = false;
     let isLooping = false;
-    let playbackSpeed = 1;
     let likeCount = 0;
+
+    // Lyrics data
+    const lyricsData = [
+        { time: 0, text: "Kadhal talk-u, night-u peak-u," },
+        { time: 5, text: "Pesi pesi sudukadu aacho." },
+        { time: 10, text: "Cat-u talk-u, moon walk-u," },
+        { time: 15, text: "Avala paathu ellam poocho." },
+        { time: 20, text: "Un kannadiyil naan, ennai thedi ponene," },
+        { time: 25, text: "Kannodu kannin vishayam theriyuma?" },
+        { time: 30, text: "Un mazhaiyil naan, kaatrai thedi nadandhen," },
+        { time: 35, text: "Kattrin oram, kadhalin moham." },
+        { time: 40, text: "Hey, raathiri raathiri radhai," },
+        { time: 45, text: "Enakku ipo venum bodhai." },
+        { time: 50, text: "Takkaru takkaru damaaru," },
+        { time: 55, text: "Nee illama naanum sumaaru." },
+        { time: 60, text: "Oru vaarthai sol, naan vaazhven," },
+        { time: 65, text: "Oru silu silu vaarthai vaangi," },
+        { time: 70, text: "Kadhal ariven." },
+        { time: 75, text: "Podi podi paava kaari," },
+        { time: 80, text: "Nee thaane enakku sooniya kaari." },
+        { time: 85, text: "Right-u wrong-u, queen-u pei-u," },
+        { time: 90, text: "Unna paatha alaeyh gaali" },
+        { time: 95, text: "Nee vanthaal, mazhalai paadum," },
+        { time: 100, text: "Thunaiyaaga naan, un mela nenaipen thooral." },
+        { time: 105, text: "Mannippu thedi, marandhaalum," },
+        { time: 110, text: "Thirumbum vazhi illaye." },
+        { time: 115, text: "Hey, raathiri raathiri radhai," },
+        { time: 120, text: "Enakku ipo venum bodhai." },
+        { time: 125, text: "Takkaru takkaru damaaru," },
+        { time: 130, text: "Nee illama naanum sumaaru." },
+        { time: 135, text: "Hey! Pencil lady, naa valakkuren thaadi," },
+        { time: 140, text: "Unnala aanen, eh ipo naanum KD." },
+        { time: 145, text: "Suthi vita bhambaram, kairu illaa thadhiram..." },
+        { time: 150, text: "Hey! Takkaru takkaru damaaru," },
+        { time: 155, text: "Nee illama naanum sumaaru." }
+    ];
+
+    // Add lyrics to the container
+    lyricsData.forEach(item => {
+        const p = document.createElement('p');
+        p.textContent = item.text;
+        lyricsContainer.appendChild(p);
+    });
 
     // Play/Pause functionality
     playPauseBtn.addEventListener('click', function () {
@@ -29,73 +76,17 @@ document.addEventListener('DOMContentLoaded', function () {
         isPlaying = !isPlaying;
     });
 
-    // Volume control
-    volumeControl.addEventListener('input', function () {
-        audioPlayer.volume = volumeControl.value / 100;
+    // Previous and Next functionality
+    prevBtn.addEventListener('click', function () {
+        // Logic to play the previous track
     });
 
-    // Download button functionality
-    downloadBtn.addEventListener('click', function () {
-        const link = document.createElement('a');
-        link.href = audioPlayer.src;
-        link.download = 'Kadhal_Night.mp3';
-        link.click();
+    nextBtn.addEventListener('click', function () {
+        // Logic to play the next track
     });
 
-    // Loop button functionality
-    loopBtn.addEventListener('click', function () {
-        isLooping = !isLooping;
-        loopBtn.textContent = isLooping ? 'Loop: On' : 'Loop: Off';
-        audioPlayer.loop = isLooping;
-    });
-
-    // Playback speed control
-    speedBtn.addEventListener('click', function () {
-        playbackSpeed = playbackSpeed === 1 ? 1.5 : 1;
-        audioPlayer.playbackRate = playbackSpeed;
-        speedBtn.textContent = `Speed: ${playbackSpeed}x`;
-    });
-
-    // Like button functionality
-    likeBtn.addEventListener('click', function () {
-        likeCount++;
-        likeCountElem.textContent = likeCount;
-    });
-
-    // Update the progress bar and time
-    audioPlayer.addEventListener('timeupdate', function () {
-        const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-        progressBar.value = progress;
-
-        currentTimeElem.textContent = formatTime(audioPlayer.currentTime);
-        durationElem.textContent = formatTime(audioPlayer.duration);
-
-        syncLyrics(audioPlayer.currentTime);
-    });
-
-    // Sync lyrics with audio time
-    const lyricTimings = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95]; // Adjust timings according to your lyrics
-
-    function syncLyrics(currentTime) {
-        lyrics.forEach((line, index) => {
-            if (currentTime >= lyricTimings[index] && (index === lyricTimings.length - 1 || currentTime < lyricTimings[index + 1])) {
-                line.style.color = '#1db954';
-                line.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            } else {
-                line.style.color = '#fff';
-            }
-        });
-    }
-
-    // Format time to mm:ss
-    function formatTime(seconds) {
-        const minutes = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
-    }
-});
-
-
+    // Loop functionality
+    loopBtn.addEventListener('
 
 
 

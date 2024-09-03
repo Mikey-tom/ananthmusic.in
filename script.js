@@ -1,18 +1,23 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const lyrics = document.querySelector(".lyrics");
-    const speed = 2000; // Speed in milliseconds per line
+    const audioPlayer = document.getElementById("audioPlayer");
+    const lyrics = document.querySelectorAll(".lyrics p");
 
-    function scrollLyrics() {
-        let firstChild = lyrics.firstElementChild;
-        firstChild.classList.add("fade-out");
-        setTimeout(() => {
-            lyrics.appendChild(firstChild);
-            firstChild.classList.remove("fade-out");
-        }, speed);
-    }
+    audioPlayer.addEventListener("timeupdate", function() {
+        const currentTime = audioPlayer.currentTime;
+        
+        lyrics.forEach((lyric, index) => {
+            const startTime = parseFloat(lyric.getAttribute("data-time"));
+            const nextTime = lyrics[index + 1] ? parseFloat(lyrics[index + 1].getAttribute("data-time")) : Infinity;
 
-    setInterval(scrollLyrics, speed);
+            if (currentTime >= startTime && currentTime < nextTime) {
+                lyric.classList.add("show");
+            } else {
+                lyric.classList.remove("show");
+            }
+        });
+    });
 });
+
 
 
 

@@ -16,8 +16,6 @@ body {
     justify-content: center;
     height: 100vh;
     text-align: center;
-    position: relative; /* Ensure positioning context for scrolling */
-    overflow: hidden; /* Hide overflowing content */
 }
 
 audio {
@@ -28,11 +26,8 @@ audio {
     color: #000; /* Black text color */
     font-size: 24px;
     line-height: 1.5; /* Line height for spacing between lines */
+    animation: glowing 1s ease-in-out infinite;
     white-space: pre-wrap; /* Ensure line breaks are preserved */
-    position: absolute; /* Absolute positioning for scrolling effect */
-    top: 100%; /* Start position off-screen */
-    width: 100%;
-    animation: scrolling 10s linear infinite; /* Adjust duration to control speed */
 }
 
 /* Glowing text effect */
@@ -41,21 +36,3 @@ audio {
     50% { text-shadow: 0 0 10px #FFF, 0 0 20px #FFF, 0 0 30px #F00, 0 0 40px #F00, 0 0 50px #F00, 0 0 60px #F00, 0 0 70px #F00; }
     100% { text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FF0, 0 0 20px #FF0, 0 0 25px #FF0, 0 0 30px #FF0, 0 0 35px #FF0; }
 }
-
-/* Scrolling effect */
-@keyframes scrolling {
-    0% {
-        top: 100%; /* Start off-screen */
-    }
-    100% {
-        top: -100%; /* Move to top off-screen */
-    }
-}
-
-
-
-
-
-
-
-

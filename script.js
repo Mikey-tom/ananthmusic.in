@@ -67,6 +67,35 @@ document.addEventListener('DOMContentLoaded', function () {
         const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
         progressBar.value = progress;
 
+        currentTimeElem.textContent = formatTime(audioPlayer.currentTime);
+        durationElem.textContent = formatTime(audioPlayer.duration);
+
+        syncLyrics(audioPlayer.currentTime);
+    });
+
+    // Sync lyrics with audio time
+    const lyricTimings = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95]; // Adjust timings according to your lyrics
+
+    function syncLyrics(currentTime) {
+        lyrics.forEach((line, index) => {
+            if (currentTime >= lyricTimings[index] && (index === lyricTimings.length - 1 || currentTime < lyricTimings[index + 1])) {
+                line.style.color = '#1db954';
+                line.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                line.style.color = '#fff';
+            }
+        });
+    }
+
+    // Format time to mm:ss
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+});
+
+
 
 
 

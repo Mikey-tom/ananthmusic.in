@@ -59,11 +59,16 @@ body {
     color: white;
     font-size: 1em;
     cursor: pointer;
-    margin: 5px;
+    margin: 0 5px;
+    transition: background-color 0.3s;
 }
 
 .control-btn#loopBtn.active {
     background-color: #ff0000;
+}
+
+.control-btn:hover {
+    background-color: #17a741;
 }
 
 .progress-container {
@@ -73,6 +78,25 @@ body {
 #progressBar {
     width: 100%;
     margin-bottom: 10px;
+    background-color: #444;
+    border-radius: 5px;
+    height: 6px;
+}
+
+#progressBar::-webkit-slider-thumb {
+    background-color: #1db954;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+}
+
+#progressBar::-moz-range-thumb {
+    background-color: #1db954;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
 }
 
 .time-info {
@@ -86,6 +110,25 @@ body {
 
 #volumeControl {
     width: 100%;
+    background-color: #444;
+    border-radius: 5px;
+    height: 6px;
+}
+
+#volumeControl::-webkit-slider-thumb {
+    background-color: #1db954;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+}
+
+#volumeControl::-moz-range-thumb {
+    background-color: #1db954;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
 }
 
 .playback-speed {
@@ -94,18 +137,47 @@ body {
 
 #playbackSpeed {
     width: 100%;
+    padding: 5px;
+    background-color: #444;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+}
+
+#playbackSpeed option {
+    background-color: #292929;
+    color: #fff;
+}
+
+#downloadBtn {
+    background-color: #1db954;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#downloadBtn:hover {
+    background-color: #17a741;
 }
 
 #lyrics {
     max-height: 200px;
     overflow-y: auto;
     text-align: left;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 10px;
 }
 
 #lyrics p {
     margin: 5px 0;
     line-height: 1.6;
 }
+
 
 
 

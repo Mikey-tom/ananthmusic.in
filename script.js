@@ -40,18 +40,22 @@ const lyrics = [
     { time: 124, text: "Nee illama naanum sumaaru." }
 ];
 
-// Define colors for different sections of the song
-const colors = [
-    "#FFB6C1", "#FFCCCB", "#FFDDC1", "#FFDAB9",
-    "#E0FFFF", "#E6E6FA", "#F0E68C", "#FFFACD",
-    "#F5DEB3", "#F0F8FF", "#FAEBD7", "#F5F5DC",
-    "#F5F5F5", "#D3D3D3", "#C0C0C0"
+// Define colors with their timings
+const colorTimings = [
+    { start: 0, end: 16, color: "#FFB6C1" }, // Light pink
+    { start: 16, end: 32, color: "#FFCCCB" }, // Light red
+    { start: 32, end: 48, color: "#FFDDC1" }, // Light peach
+    { start: 48, end: 64, color: "#FFDAB9" }, // Peach puff
+    { start: 64, end: 80, color: "#E0FFFF" }, // Light cyan
+    { start: 80, end: 96, color: "#E6E6FA" }, // Lavender
+    { start: 96, end: 112, color: "#F0E68C" }, // Khaki
+    { start: 112, end: 128, color: "#FFFACD" } // Lemon chiffon
 ];
 
 let currentLyricIndex = -1;
 let currentColorIndex = 0;
 
-function updateLyrics() {
+function updateLyricsAndColor() {
     const currentTime = audioPlayer.currentTime;
     
     // Find the current lyric line
@@ -62,21 +66,24 @@ function updateLyrics() {
         // Update the lyrics container
         lyricsContainer.textContent = lyrics[newLyricIndex - 1].text;
         currentLyricIndex = newLyricIndex - 1; // Update current index
-        
-        // Change background color
-        body.style.backgroundColor = colors[currentColorIndex % colors.length];
-        currentColorIndex++;
+    }
+    
+    // Update background color based on time
+    const color = colorTimings.find(({ start, end }) => currentTime >= start && currentTime < end);
+    if (color) {
+        body.style.backgroundColor = color.color;
     }
 }
 
 // Use requestAnimationFrame for smoother updates
 function onTimeUpdate() {
-    updateLyrics();
+    updateLyricsAndColor();
     requestAnimationFrame(onTimeUpdate);
 }
 
-// Event listener to update lyrics during playback
+// Event listener to update lyrics and color during playback
 audioPlayer.addEventListener('play', () => {
     requestAnimationFrame(onTimeUpdate);
 });
+
 

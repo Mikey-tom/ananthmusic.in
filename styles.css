@@ -6,6 +6,7 @@ body {
     padding: 0;
     overflow: hidden;
     transition: background-color 1s ease; /* Smooth background color transition */
+    background-color: #000; /* Default background color */
 }
 
 #musicPlayer {
@@ -22,15 +23,18 @@ audio {
 }
 
 #lyricsContainer {
-    color: white;
+    color: #000; /* Black text color */
     font-size: 24px;
-    animation: fadeInOut 5s ease infinite;
+    animation: glowing 1s ease-in-out infinite;
 }
 
-@keyframes fadeInOut {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 1; }
+/* Glowing text effect */
+@keyframes glowing {
+    0% { text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FF0, 0 0 20px #FF0, 0 0 25px #FF0, 0 0 30px #FF0, 0 0 35px #FF0; }
+    50% { text-shadow: 0 0 10px #FFF, 0 0 20px #FFF, 0 0 30px #F00, 0 0 40px #F00, 0 0 50px #F00, 0 0 60px #F00, 0 0 70px #F00; }
+    100% { text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FF0, 0 0 20px #FF0, 0 0 25px #FF0, 0 0 30px #FF0, 0 0 35px #FF0; }
 }
+
 
 
 

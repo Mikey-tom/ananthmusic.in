@@ -2,6 +2,7 @@
 
 const audioPlayer = document.getElementById('audioPlayer');
 const lyricsContainer = document.getElementById('lyricsContainer');
+const body = document.body;
 
 // Define the lyrics with time stamps
 const lyrics = [
@@ -39,7 +40,16 @@ const lyrics = [
     { time: 124, text: "Nee illama naanum sumaaru." }
 ];
 
+// Define colors for different sections of the song
+const colors = [
+    "#FFB6C1", "#FFCCCB", "#FFDDC1", "#FFDAB9",
+    "#E0FFFF", "#E6E6FA", "#F0E68C", "#FFFACD",
+    "#F5DEB3", "#F0F8FF", "#FAEBD7", "#F5F5DC",
+    "#F5F5F5", "#D3D3D3", "#C0C0C0"
+];
+
 let currentLyricIndex = -1;
+let currentColorIndex = 0;
 
 function updateLyrics() {
     const currentTime = audioPlayer.currentTime;
@@ -52,6 +62,10 @@ function updateLyrics() {
         // Update the lyrics container
         lyricsContainer.textContent = lyrics[newLyricIndex - 1].text;
         currentLyricIndex = newLyricIndex - 1; // Update current index
+        
+        // Change background color
+        body.style.backgroundColor = colors[currentColorIndex % colors.length];
+        currentColorIndex++;
     }
 }
 
@@ -65,3 +79,4 @@ function onTimeUpdate() {
 audioPlayer.addEventListener('play', () => {
     requestAnimationFrame(onTimeUpdate);
 });
+

@@ -4,74 +4,56 @@ const audioPlayer = document.getElementById('audioPlayer');
 const lyricsContainer = document.getElementById('lyricsContainer');
 const body = document.body;
 
-// Define the lyrics with time stamps
+// Define the lyrics with timestamps and associated colors
 const lyrics = [
-    { time: 0, text: "Kadhal talk-u, night-u peak-u," },
-    { time: 6, text: "Pesi pesi sudukadu aachu." },
-    { time: 8, text: "Cat-u talk-u, moon walk-u," },
-    { time: 12, text: "Avala paathu ellam poochu." },
-    { time: 16, text: "Un kannadiyil naan, ennai thedi ponene," },
-    { time: 20, text: "Kannodu kannin vishayam theriyuma?" },
-    { time: 24, text: "Un mazhaiyil naan, kaatrai thedi nadandhen," },
-    { time: 28, text: "Kattrin oram, kadhalin moham." },
-    { time: 32, text: "Hey, raathiri raathiri radhai," },
-    { time: 36, text: "Enakku ipo venum bodhai." },
-    { time: 40, text: "Takkaru takkaru damaaru," },
-    { time: 44, text: "Nee illama naanum sumaaru." },
-    { time: 48, text: "Oru vaarthai sol, naan vaazhven," },
-    { time: 52, text: "Oru silu silu vaarthai vaangi," },
-    { time: 56, text: "Kadhal ariven." },
-    { time: 60, text: "Podi podi paava kaari," },
-    { time: 64, text: "Nee thaane enakku sooniya kaari." },
-    { time: 68, text: "Right-u wrong-u, queen-u pei-u," },
-    { time: 72, text: "Unna paatha alaeyh gaali" },
-    { time: 76, text: "Nee vanthaal, mazhalai paadum," },
-    { time: 80, text: "Thunaiyaaga naan, un mela nenaipen thooral." },
-    { time: 84, text: "Mannippu thedi, marandhaalum," },
-    { time: 88, text: "Thirumbum vazhi illaye." },
-    { time: 92, text: "Hey, raathiri raathiri radhai," },
-    { time: 96, text: "Enakku ipo venum bodhai." },
-    { time: 100, text: "Takkaru takkaru damaaru," },
-    { time: 104, text: "Nee illama naanum sumaaru" },
-    { time: 108, text: "Hey! Pencil lady, naa valakkuren thaadi," },
-    { time: 112, text: "Unnala aanen, eh ipo naanum KD." },
-    { time: 116, text: "Suthi vita bhambaram, kairu illaa thadhiram..." },
-    { time: 120, text: "Hey! Takkaru takkaru damaaru," },
-    { time: 124, text: "Nee illama naanum sumaaru." }
-];
-
-// Define colors with their timings
-const colorTimings = [
-    { start: 0, end: 16, color: "#FFB6C1" }, // Light pink
-    { start: 16, end: 32, color: "#FFCCCB" }, // Light red
-    { start: 32, end: 48, color: "#FFDDC1" }, // Light peach
-    { start: 48, end: 64, color: "#FFDAB9" }, // Peach puff
-    { start: 64, end: 80, color: "#E0FFFF" }, // Light cyan
-    { start: 80, end: 96, color: "#E6E6FA" }, // Lavender
-    { start: 96, end: 112, color: "#F0E68C" }, // Khaki
-    { start: 112, end: 128, color: "#FFFACD" } // Lemon chiffon
+    { time: 0, text: "Kadhal talk-u, night-u peak-u,", color: "#FFB6C1" }, // Light pink
+    { time: 4, text: "Pesi pesi soodukaadu aachu.", color: "#FFCCCB" }, // Light red
+    { time: 8, text: "Cat-u talk-u, moon walk-u,", color: "#FFDDC1" }, // Light peach
+    { time: 12, text: "Avala paathu ehlam poochu.", color: "#FFDAB9" }, // Peach puff
+    { time: 16, text: "Un kannadiyil naan, ennai thedi ponene,", color: "#E0FFFF" }, // Light cyan
+    { time: 20, text: "Kannodu kannin vishayam theriyuma?", color: "#E6E6FA" }, // Lavender
+    { time: 24, text: "Un mazhaiyil naan, kaatrai thedi nadandhen,", color: "#F0E68C" }, // Khaki
+    { time: 28, text: "Kattrin oram, kadhalin moham.", color: "#FFFACD" }, // Lemon chiffon
+    { time: 32, text: "Hey, raathiri raathiri radhai,", color: "#FFB6C1" },
+    { time: 36, text: "Enakku ipo venum bodhai.", color: "#FFCCCB" },
+    { time: 40, text: "Takkaru takkaru damaaru,", color: "#FFDDC1" },
+    { time: 44, text: "Nee illama naanum sumaaru.", color: "#FFDAB9" },
+    { time: 48, text: "Oru vaarthai sol, naan vaazhven,", color: "#E0FFFF" },
+    { time: 52, text: "Oru silu silu vaarthai vaangi,", color: "#E6E6FA" },
+    { time: 56, text: "Kadhal ariven.", color: "#F0E68C" },
+    { time: 60, text: "Podi podi paava kaari,", color: "#FFFACD" },
+    { time: 64, text: "Nee thaane enakku sooniya kaari.", color: "#FFB6C1" },
+    { time: 68, text: "Right-u wrong-u, queen-u pei-u,", color: "#FFCCCB" },
+    { time: 72, text: "Unna paatha alaeyh gaali", color: "#FFDDC1" },
+    { time: 76, text: "Nee vanthaal, mazhalai paadum,", color: "#FFDAB9" },
+    { time: 80, text: "Thunaiyaaga naan, un mela nenaipen thooral.", color: "#E0FFFF" },
+    { time: 84, text: "Mannippu thedi, marandhaalum,", color: "#E6E6FA" },
+    { time: 88, text: "Thirumbum vazhi illaye.", color: "#F0E68C" },
+    { time: 92, text: "Hey, raathiri raathiri radhai,", color: "#FFFACD" },
+    { time: 96, text: "Enakku ipo venum bodhai.", color: "#FFB6C1" },
+    { time: 100, text: "Takkaru takkaru damaaru,", color: "#FFCCCB" },
+    { time: 104, text: "Nee illama naanum sumaaru", color: "#FFDDC1" },
+    { time: 108, text: "Hey! Pencil lady, naa valakkuren thaadi,", color: "#FFDAB9" },
+    { time: 112, text: "Unnala aanen, eh ipo naanum KD.", color: "#E0FFFF" },
+    { time: 116, text: "Suthi vita bhambaram, kairu illaa thadhiram...", color: "#E6E6FA" },
+    { time: 120, text: "Hey! Takkaru takkaru damaaru,", color: "#F0E68C" },
+    { time: 124, text: "Nee illama naanum sumaaru.", color: "#FFFACD" }
 ];
 
 let currentLyricIndex = -1;
-let currentColorIndex = 0;
 
 function updateLyricsAndColor() {
     const currentTime = audioPlayer.currentTime;
-    
+
     // Find the current lyric line
     const newLyricIndex = lyrics.findIndex(lyric => lyric.time > currentTime);
-    
-    // If the new index is valid and different from the current index
+
+    // Update lyrics if the lyric index has changed
     if (newLyricIndex > 0 && newLyricIndex !== currentLyricIndex) {
-        // Update the lyrics container
-        lyricsContainer.textContent = lyrics[newLyricIndex - 1].text;
+        const currentLyric = lyrics[newLyricIndex - 1];
+        lyricsContainer.textContent = currentLyric.text;
+        body.style.backgroundColor = currentLyric.color;
         currentLyricIndex = newLyricIndex - 1; // Update current index
-    }
-    
-    // Update background color based on time
-    const color = colorTimings.find(({ start, end }) => currentTime >= start && currentTime < end);
-    if (color) {
-        body.style.backgroundColor = color.color;
     }
 }
 
@@ -85,5 +67,6 @@ function onTimeUpdate() {
 audioPlayer.addEventListener('play', () => {
     requestAnimationFrame(onTimeUpdate);
 });
+
 
 

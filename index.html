@@ -18,14 +18,21 @@
         <audio id="audioPlayer" src="Kadhal poeituh Listen and Download AI Music Generator (3).mp3"></audio>
         <div class="controls">
             <button id="playPauseBtn">Play</button>
-            <button id="likeBtn">Like <span id="likeCount">0</span></button>
-            <input type="range" id="volumeControl" value="100" max="100" aria-label="Volume Control">
-            <button id="downloadBtn">Download</button>
-            <button id="loopBtn">Loop: Off</button>
-            <button id="speedBtn">Speed: 1x</button>
-            <input type="range" id="progressBar" value="0" max="100" aria-label="Progress Bar">
+            <button id="volumeBtn">Volume</button>
+            <input type="range" id="volumeControl" min="0" max="100" value="100">
+            <input type="range" id="progressBar" value="0" max="100">
             <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
         </div>
+        <div id="lyrics" class="lyrics-container">
+            <p style="color: #FFB6C1;">Kadhal talk-u, night-u peak-u,</p>
+            <p style="color: #FFCCCB;">Pesi pesi sudukadu aacho.</p>
+            <!-- Add the rest of the lyrics here -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+<div>
         <div id="lyrics" class="lyrics-container">
             <p>Kadhal talk-u, night-u peak-u,</p>
             <p>Pesi pesi sudukadu aacho.</p>

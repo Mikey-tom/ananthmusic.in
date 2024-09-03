@@ -7,9 +7,9 @@ const body = document.body;
 // Define the lyrics with time stamps
 const lyrics = [
     { time: 0, text: "Kadhal talk-u, night-u peak-u," },
-    { time: 4, text: "Pesi pesi soodukaadu aachu." },
+    { time: 4, text: "Pesi pesi sudukadu aachu." },
     { time: 8, text: "Cat-u talk-u, moon walk-u," },
-    { time: 12, text: "Avala paathu ehlam poochu." },
+    { time: 12, text: "Avala paathu ellam poochu." },
     { time: 16, text: "Un kannadiyil naan, ennai thedi ponene," },
     { time: 20, text: "Kannodu kannin vishayam theriyuma?" },
     { time: 24, text: "Un mazhaiyil naan, kaatrai thedi nadandhen," },

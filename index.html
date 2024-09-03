@@ -3,24 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Player</title>
+    <title>Modern Music Player</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="music-player">
         <div class="player-header">
             <div class="cover">
-                <img src="cover-art.jpg" alt="Cover Art">
+                <img src="cover-art.png" alt="Cover Art">
             </div>
             <div class="info">
-                <h2>Song Title</h2>
-                <h3>Artist Name</h3>
+                <h2>Kadhal Night</h2>
+                <h3>Ananth</h3>
             </div>
         </div>
-        <audio id="audioPlayer" src="song.mp3"></audio>
+        <audio id="audioPlayer" src="Kadhal-poeituh.mp3"></audio>
         <div class="controls">
+            <button id="prevBtn" class="control-btn">Prev</button>
             <button id="playPauseBtn" class="control-btn">Play</button>
-            <button id="downloadBtn" class="control-btn">Download</button>
+            <button id="nextBtn" class="control-btn">Next</button>
+            <button id="loopBtn" class="control-btn">Loop</button>
+            <button id="likeBtn" class="control-btn">Like <span id="likeCount">0</span></button>
         </div>
         <div class="progress-container">
             <input type="range" id="progressBar" value="0" max="100">
@@ -29,6 +32,7 @@
             </div>
         </div>
         <div class="volume-container">
+            <label for="volumeControl">Volume:</label>
             <input type="range" id="volumeControl" value="100" max="100">
         </div>
         <div class="playback-speed">
@@ -39,7 +43,12 @@
                 <option value="1.5">1.5x</option>
                 <option value="2">2x</option>
             </select>
+        </div>
+        <button id="downloadBtn" class="control-btn">Download</button>
+        <div id="lyrics" class="lyrics-container"></div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
+
 

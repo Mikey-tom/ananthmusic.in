@@ -7,24 +7,40 @@ body {
     overflow: hidden;
 }
 
-.lyrics-container {
+.player-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 100vh;
+    padding: 20px;
+}
+
+audio {
+    margin-bottom: 20px;
+}
+
+.lyrics-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+    height: 70vh;
     overflow: hidden;
 }
 
 .lyrics {
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
-    animation: scrollLyrics 30s linear infinite;
 }
 
-@keyframes scrollLyrics {
-    0% { transform: translateY(100%); }
-    100% { transform: translateY(-200%); }
+.lyrics p {
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
+
+.lyrics p.show {
+    opacity: 1;
+}
+
 
 

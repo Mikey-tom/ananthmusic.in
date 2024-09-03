@@ -25,9 +25,7 @@ audio {
 #lyricsContainer {
     color: #000; /* Black text color */
     font-size: 24px;
-    line-height: 1.5; /* Line height for spacing between lines */
     animation: glowing 1s ease-in-out infinite;
-    white-space: pre-wrap; /* Ensure line breaks are preserved */
 }
 
 /* Glowing text effect */
@@ -36,3 +34,4 @@ audio {
     50% { text-shadow: 0 0 10px #FFF, 0 0 20px #FFF, 0 0 30px #F00, 0 0 40px #F00, 0 0 50px #F00, 0 0 60px #F00, 0 0 70px #F00; }
     100% { text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FF0, 0 0 20px #FF0, 0 0 25px #FF0, 0 0 30px #FF0, 0 0 35px #FF0; }
 }
+

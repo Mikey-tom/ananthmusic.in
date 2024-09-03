@@ -19,11 +19,11 @@
         <div class="controls">
             <button id="playPauseBtn">Play</button>
             <button id="likeBtn">Like <span id="likeCount">0</span></button>
-            <input type="range" id="volumeControl" value="100" max="100">
+            <input type="range" id="volumeControl" value="100" max="100" aria-label="Volume Control">
             <button id="downloadBtn">Download</button>
             <button id="loopBtn">Loop: Off</button>
             <button id="speedBtn">Speed: 1x</button>
-            <input type="range" id="progressBar" value="0" max="100">
+            <input type="range" id="progressBar" value="0" max="100" aria-label="Progress Bar">
             <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
         </div>
         <div id="lyrics" class="lyrics-container">
@@ -68,6 +68,7 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
 

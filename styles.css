@@ -2,23 +2,20 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #f5f5f5, #d0e6f6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    color: #333;
+    transition: background-color 0.5s ease; /* Smooth transition for background color */
 }
 
 .player-container {
     text-align: center;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for the player */
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     max-width: 600px;
     width: 100%;
+    margin: auto;
+    position: relative;
+    z-index: 1;
 }
 
 h1 {
@@ -36,6 +33,7 @@ audio {
     color: #555;
     line-height: 1.5;
 }
+
 
 
 

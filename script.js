@@ -56,40 +56,40 @@ document.addEventListener('DOMContentLoaded', function () {
         return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
     }
 
-    // Lyrics with timings
+    // Faster Lyrics with timings
     const lyrics = [
-        { time: 1, text: "Kadhal talk-u, night-u peak-u," },
-        { time: 2, text: "Pesi pesi sudukadu aacho." },
-        { time: 2.5, text: "Cat-u talk-u, moon walk-u," },
-        { time: 3, text: "Avala paathu ellam poocho." },
-        { time: 3.5, text: "Un kannadiyil naan, ennai thedi ponene," },
-        { time: 3.75, text: "Kannodu kannin vishayam theriyuma?" },
-        { time: 4, text: "Un mazhaiyil naan, kaatrai thedi nadandhen," },
-        { time: 4.25, text: "Kattrin oram, kadhalin moham." },
-        { time: 4.75, text: "Hey, raathiri raathiri radhai," },
-        { time: 5, text: "Enakku ipo venum bodhai." },
+        { time: 0.5, text: "Kadhal talk-u, night-u peak-u," },
+        { time: 1.0, text: "Pesi pesi sudukadu aacho." },
+        { time: 1.5, text: "Cat-u talk-u, moon walk-u," },
+        { time: 2.0, text: "Avala paathu ellam poocho." },
+        { time: 2.5, text: "Un kannadiyil naan, ennai thedi ponene," },
+        { time: 3.0, text: "Kannodu kannin vishayam theriyuma?" },
+        { time: 3.5, text: "Un mazhaiyil naan, kaatrai thedi nadandhen," },
+        { time: 4.0, text: "Kattrin oram, kadhalin moham." },
+        { time: 4.5, text: "Hey, raathiri raathiri radhai," },
+        { time: 5.0, text: "Enakku ipo venum bodhai." },
         { time: 5.5, text: "Takkaru takkaru damaaru," },
-        { time: 5.75, text: "Nee illama naanum sumaaru." },
-        { time: 6, text: "Oru vaarthai sol, naan vaazhven," },
-        { time: 6.5, text: "Oru silu silu vaarthai vaangi," },
-        { time: 6.75, text: "Kadhal ariven." },
-        { time: 7, text: "Podi podi paava kaari," },
-        { time: 7.5, text: "Nee thaane enakku sooniya kaari." },
-        { time: 7.75, text: "Right-u wrong-u, queen-u pei-u," },
-        { time: 8, text: "Unna paatha alaeyh gaali" },
-        { time: 8.5, text: "Nee vanthaal, mazhalai paadum," },
-        { time: 8.75, text: "Thunaiyaaga naan, un mela nenaipen thooral." },
-        { time: 9, text: "Mannippu thedi, marandhaalum," },
-        { time: 9.5, text: "Thirumbum vazhi illaye." },
-        { time: 9.75, text: "Hey, raathiri raathiri radhai," },
-        { time: 10, text: "Enakku ipo venum bodhai." },
-        { time: 10.5, text: "Takkaru takkaru damaaru," },
-        { time: 10.75, text: "Nee illama naanum sumaaru" },
-        { time: 11, text: "Hey! Pencil lady, naa valakkuren thaadi," },
-        { time: 11.5, text: "Unnala aanen, eh ipo naanum KD." },
-        { time: 11.75, text: "Suthi vita bhambaram, kairu illaa thadhiram..." },
-        { time: 12, text: "Hey! Takkaru takkaru damaaru," },
-        { time: 12.5, text: "Nee illama naanum sumaaru." },
+        { time: 6.0, text: "Nee illama naanum sumaaru." },
+        { time: 6.5, text: "Oru vaarthai sol, naan vaazhven," },
+        { time: 7.0, text: "Oru silu silu vaarthai vaangi," },
+        { time: 7.5, text: "Kadhal ariven." },
+        { time: 8.0, text: "Podi podi paava kaari," },
+        { time: 8.5, text: "Nee thaane enakku sooniya kaari." },
+        { time: 9.0, text: "Right-u wrong-u, queen-u pei-u," },
+        { time: 9.5, text: "Unna paatha alaeyh gaali" },
+        { time: 10.0, text: "Nee vanthaal, mazhalai paadum," },
+        { time: 10.5, text: "Thunaiyaaga naan, un mela nenaipen thooral." },
+        { time: 11.0, text: "Mannippu thedi, marandhaalum," },
+        { time: 11.5, text: "Thirumbum vazhi illaye." },
+        { time: 12.0, text: "Hey, raathiri raathiri radhai," },
+        { time: 12.5, text: "Enakku ipo venum bodhai." },
+        { time: 13.0, text: "Takkaru takkaru damaaru," },
+        { time: 13.5, text: "Nee illama naanum sumaaru" },
+        { time: 14.0, text: "Hey! Pencil lady, naa valakkuren thaadi," },
+        { time: 14.5, text: "Unnala aanen, eh ipo naanum KD." },
+        { time: 15.0, text: "Suthi vita bhambaram, kairu illaa thadhiram..." },
+        { time: 15.5, text: "Hey! Takkaru takkaru damaaru," },
+        { time: 16.0, text: "Nee illama naanum sumaaru." },
     ];
 
     // Add lyrics to the container
@@ -112,6 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
 
 
 

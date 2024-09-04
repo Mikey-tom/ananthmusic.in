@@ -16,6 +16,7 @@ body {
     max-width: 400px;
     width: 100%;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
 }
 
 .player-header {
@@ -81,6 +82,7 @@ body {
     background-color: #444;
     border-radius: 5px;
     height: 6px;
+    transition: background-color 0.3s;
 }
 
 #progressBar::-webkit-slider-thumb {
@@ -113,70 +115,10 @@ body {
     background-color: #444;
     border-radius: 5px;
     height: 6px;
-}
-
-#volumeControl::-webkit-slider-thumb {
-    background-color: #1db954;
-    border-radius: 50%;
-    cursor: pointer;
-    height: 16px;
-    width: 16px;
-}
-
-#volumeControl::-moz-range-thumb {
-    background-color: #1db954;
-    border-radius: 50%;
-    cursor: pointer;
-    height: 16px;
-    width: 16px;
-}
-
-.playback-speed {
-    margin-bottom: 20px;
-}
-
-#playbackSpeed {
-    width: 100%;
-    padding: 5px;
-    background-color: #444;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-}
-
-#playbackSpeed option {
-    background-color: #292929;
-    color: #fff;
-}
-
-#downloadBtn {
-    background-color: #1db954;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 50px;
-    color: white;
-    font-size: 1em;
-    cursor: pointer;
     transition: background-color 0.3s;
 }
 
-#downloadBtn:hover {
-    background-color: #17a741;
-}
 
-#lyrics {
-    max-height: 200px;
-    overflow-y: auto;
-    text-align: left;
-    padding: 10px;
-    background-color: #333;
-    border-radius: 10px;
-}
-
-#lyrics p {
-    margin: 5px 0;
-    line-height: 1.6;
-}
 
 
 

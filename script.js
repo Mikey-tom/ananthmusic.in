@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const lyricsContainer = document.getElementById('lyrics');
 
     let isPlaying = false;
-    let lyricIndex = 0;
 
     // Play/Pause functionality
     playPauseBtn.addEventListener('click', function () {
@@ -102,10 +101,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Sync lyrics with audio time
     function syncLyrics(currentTime) {
-        const delayIncrement = 0.5; // Increase the delay between each line
+        const delayIncrement = 0.5; // Adjust this value for timing between lines
         lyrics.forEach((line, index) => {
             const lyricElement = lyricsContainer.children[index];
-            if (currentTime >= line.time - delayIncrement * index && (index === lyrics.length - 1 || currentTime < lyrics[index + 1].time - delayIncrement
+            if (currentTime >= line.time - delayIncrement * index && (index === lyrics.length - 1 || currentTime < lyrics[index + 1].time - delayIncrement * index)) {
+                lyricElement.style.opacity = 1;
+                lyricElement.classList.add('highlighted');
+                lyricElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                lyricElement.style.opacity = 0;
+                lyricElement.classList.remove('highlighted');
+            }
+        });
+    }
+});
+
 
 
 

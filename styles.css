@@ -118,27 +118,31 @@ body {
     position: relative; /* For better alignment */
 }
 
+/* Cave-shaped button */
 #volumeControl::-webkit-slider-thumb {
     background-color: #1db954;
     border-radius: 50%; /* Fully rounded thumb */
     cursor: pointer;
-    height: 20px; /* Size of the thumb */
-    width: 20px; /* Size of the thumb */
+    height: 24px; /* Size of the thumb */
+    width: 24px; /* Size of the thumb */
     position: relative;
     border: 2px solid #fff; /* Optional border for better visibility */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Optional shadow for depth */
+    clip-path: polygon(50% 0%, 80% 20%, 100% 50%, 80% 80%, 50% 100%, 20% 80%, 0% 50%, 20% 20%); /* Cave shape */
 }
 
 #volumeControl::-moz-range-thumb {
     background-color: #1db954;
     border-radius: 50%; /* Fully rounded thumb */
     cursor: pointer;
-    height: 20px; /* Size of the thumb */
-    width: 20px; /* Size of the thumb */
+    height: 24px; /* Size of the thumb */
+    width: 24px; /* Size of the thumb */
     position: relative;
     border: 2px solid #fff; /* Optional border for better visibility */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Optional shadow for depth */
+    clip-path: polygon(50% 0%, 80% 20%, 100% 50%, 80% 80%, 50% 100%, 20% 80%, 0% 50%, 20% 20%); /* Cave shape */
 }
+
 
 .playback-speed {
     margin-bottom: 20px;

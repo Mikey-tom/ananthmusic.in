@@ -56,41 +56,41 @@ document.addEventListener('DOMContentLoaded', function () {
         return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
     }
 
-    // Lyrics with timings (apply scaling factor)
-    const scalingFactor = 0.8;  // Adjust this factor to increase/decrease speed
+    // Lyrics with timings (adjusted for faster playback speeds)
+    const scalingFactor = 1.2;  // Adjust this factor to synchronize with playback speed
     const lyrics = [
         { time: 1 * scalingFactor, text: "Kadhal talk-u, night-u peak-u," },
         { time: 2 * scalingFactor, text: "Pesi pesi sudukadu aacho." },
-        { time: 2.5 * scalingFactor, text: "Cat-u talk-u, moon walk-u," },
-        { time: 3 * scalingFactor, text: "Avala paathu ellam poocho." },
-        { time: 3.5 * scalingFactor, text: "Un kannadiyil naan, ennai thedi ponene," },
-        { time: 3.75 * scalingFactor, text: "Kannodu kannin vishayam theriyuma?" },
-        { time: 4 * scalingFactor, text: "Un mazhaiyil naan, kaatrai thedi nadandhen," },
-        { time: 4.25 * scalingFactor, text: "Kattrin oram, kadhalin moham." },
-        { time: 4.75 * scalingFactor, text: "Hey, raathiri raathiri radhai," },
-        { time: 5 * scalingFactor, text: "Enakku ipo venum bodhai." },
-        { time: 5.5 * scalingFactor, text: "Takkaru takkaru damaaru," },
-        { time: 6 * scalingFactor, text: "Nee illama naanum sumaaru." },
-        { time: 6.5 * scalingFactor, text: "Oru vaarthai sol, naan vaazhven," },
-        { time: 7 * scalingFactor, text: "Oru silu silu vaarthai vaangi," },
-        { time: 7.5 * scalingFactor, text: "Kadhal ariven." },
-        { time: 8 * scalingFactor, text: "Podi podi paava kaari," },
-        { time: 8.5 * scalingFactor, text: "Nee thaane enakku sooniya kaari." },
-        { time: 9 * scalingFactor, text: "Right-u wrong-u, queen-u pei-u," },
-        { time: 9.5 * scalingFactor, text: "Unna paatha alaeyh gaali" },
-        { time: 10 * scalingFactor, text: "Nee vanthaal, mazhalai paadum," },
-        { time: 10.5 * scalingFactor, text: "Thunaiyaaga naan, un mela nenaipen thooral." },
-        { time: 11 * scalingFactor, text: "Mannippu thedi, marandhaalum," },
-        { time: 11.5 * scalingFactor, text: "Thirumbum vazhi illaye." },
-        { time: 12 * scalingFactor, text: "Hey, raathiri raathiri radhai," },
-        { time: 12.5 * scalingFactor, text: "Enakku ipo venum bodhai." },
-        { time: 13 * scalingFactor, text: "Takkaru takkaru damaaru," },
-        { time: 13.5 * scalingFactor, text: "Nee illama naanum sumaaru" },
-        { time: 14 * scalingFactor, text: "Hey! Pencil lady, naa valakkuren thaadi," },
-        { time: 14.5 * scalingFactor, text: "Unnala aanen, eh ipo naanum KD." },
-        { time: 15 * scalingFactor, text: "Suthi vita bhambaram, kairu illaa thadhiram..." },
-        { time: 15.5 * scalingFactor, text: "Hey! Takkaru takkaru damaaru," },
-        { time: 16 * scalingFactor, text: "Nee illama naanum sumaaru." },
+        { time: 3 * scalingFactor, text: "Cat-u talk-u, moon walk-u," },
+        { time: 4 * scalingFactor, text: "Avala paathu ellam poocho." },
+        { time: 5 * scalingFactor, text: "Un kannadiyil naan, ennai thedi ponene," },
+        { time: 6 * scalingFactor, text: "Kannodu kannin vishayam theriyuma?" },
+        { time: 7 * scalingFactor, text: "Un mazhaiyil naan, kaatrai thedi nadandhen," },
+        { time: 8 * scalingFactor, text: "Kattrin oram, kadhalin moham." },
+        { time: 9 * scalingFactor, text: "Hey, raathiri raathiri radhai," },
+        { time: 10 * scalingFactor, text: "Enakku ipo venum bodhai." },
+        { time: 11 * scalingFactor, text: "Takkaru takkaru damaaru," },
+        { time: 12 * scalingFactor, text: "Nee illama naanum sumaaru." },
+        { time: 13 * scalingFactor, text: "Oru vaarthai sol, naan vaazhven," },
+        { time: 14 * scalingFactor, text: "Oru silu silu vaarthai vaangi," },
+        { time: 15 * scalingFactor, text: "Kadhal ariven." },
+        { time: 16 * scalingFactor, text: "Podi podi paava kaari," },
+        { time: 17 * scalingFactor, text: "Nee thaane enakku sooniya kaari." },
+        { time: 18 * scalingFactor, text: "Right-u wrong-u, queen-u pei-u," },
+        { time: 19 * scalingFactor, text: "Unna paatha alaeyh gaali" },
+        { time: 20 * scalingFactor, text: "Nee vanthaal, mazhalai paadum," },
+        { time: 21 * scalingFactor, text: "Thunaiyaaga naan, un mela nenaipen thooral." },
+        { time: 22 * scalingFactor, text: "Mannippu thedi, marandhaalum," },
+        { time: 23 * scalingFactor, text: "Thirumbum vazhi illaye." },
+        { time: 24 * scalingFactor, text: "Hey, raathiri raathiri radhai," },
+        { time: 25 * scalingFactor, text: "Enakku ipo venum bodhai." },
+        { time: 26 * scalingFactor, text: "Takkaru takkaru damaaru," },
+        { time: 27 * scalingFactor, text: "Nee illama naanum sumaaru" },
+        { time: 28 * scalingFactor, text: "Hey! Pencil lady, naa valakkuren thaadi," },
+        { time: 29 * scalingFactor, text: "Unnala aanen, eh ipo naanum KD." },
+        { time: 30 * scalingFactor, text: "Suthi vita bhambaram, kairu illaa thadhiram..." },
+        { time: 31 * scalingFactor, text: "Hey! Takkaru takkaru damaaru," },
+        { time: 32 * scalingFactor, text: "Nee illama naanum sumaaru." },
     ];
 
     // Add lyrics to the container
@@ -113,6 +113,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+
 
 
 

@@ -99,7 +99,11 @@ body {
 }
 
 .volume-container {
-    margin-bottom: 20px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 #volumeControl {

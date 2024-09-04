@@ -105,30 +105,35 @@ body {
 }
 
 .volume-container {
-    margin-bottom-center: 10px;
+    display: flex;
+    justify-content: center; /* Center the volume control */
+    margin-bottom: 10px; /* Adjusted margin for spacing */
 }
 
 #volumeControl {
-    width: 50%;
+    width: 50%; /* Reduced width to make it smaller */
     background-color: #444;
     border-radius: 2px;
     height: 4px;
+    position: relative; /* Added for centering */
 }
 
 #volumeControl::-webkit-slider-thumb {
     background-color: #1db954;
-    border-radius: 20%;
+    border-radius: 20%; /* Small rounded corners */
     cursor: pointer;
-    height: 6px;
-    width: 6px;
+    height: 10px; /* Reduced size */
+    width: 10px; /* Reduced size */
+    position: relative; /* Added for better alignment */
 }
 
 #volumeControl::-moz-range-thumb {
     background-color: #1db954;
     border-radius: 50%;
     cursor: pointer;
-    height: 16px;
-    width: 16px;
+    height: 10px; /* Reduced size */
+    width: 10px; /* Reduced size */
+    position: relative; /* Added for better alignment */
 }
 
 .playback-speed {

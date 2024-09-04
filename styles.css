@@ -98,33 +98,6 @@ body {
     justify-content: space-between;
 }
 
-.volume-container {
-    margin-side: 10px;
-}
-
-#volumeControl {
-    width: 100%;
-    background-color: #444;
-    border-radius: 5px;
-    height: 6px;
-}
-
-#volumeControl::-webkit-slider-thumb {
-    background-color: #1db954;
-    border-radius: 50%;
-    cursor: pointer;
-    height: 16px;
-    width: 16px;
-}
-
-#volumeControl::-moz-range-thumb {
-    background-color: #1db954;
-    border-radius: 50%;
-    cursor: pointer;
-    height: 16px;
-    width: 16px;
-}
-
 .playback-speed {
     margin-bottom: 20px;
 }

@@ -59,10 +59,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // Lyrics with timings
     const lyrics = [
         { time: 1, text: "Kadhal talk-u, night-u peak-u," },
-        { time: 2.5, text: "Pesi pesi sudukadu aacho." },
-        { time: 3.5, text: "Cat-u talk-u, moon walk-u," },
-        { time: 4, text: "Avala paathu ellam poocho." },
-        { time: 4.4, text: "Un kannadiyil naan, ennai thedi ponene," },
+        { time: 2.1, text: "Pesi pesi sudukadu aacho." },
+        { time: 3.2, text: "Cat-u talk-u, moon walk-u," },
+        { time: 3.4, text: "Avala paathu ellam poocho." },
+        { time: 3.5, text: "Un kannadiyil naan, ennai thedi ponene," },
         { time: 4.8, text: "Kannodu kannin vishayam theriyuma?" },
         { time: 5, text: "Un mazhaiyil naan, kaatrai thedi nadandhen," },
         { time: 5.2, text: "Kattrin oram, kadhalin moham." },

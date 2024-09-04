@@ -56,40 +56,40 @@ document.addEventListener('DOMContentLoaded', function () {
         return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
     }
 
-    // Lyrics with timings
+    // Lyrics with adjusted timings
     const lyrics = [
         { time: 0, text: "Kadhal talk-u, night-u peak-u," },
-        { time: 0.04, text: "Pesi pesi sudukadu aacho." },
-        { time: 0.06, text: "Cat-u talk-u, moon walk-u," },
-        { time: 15, text: "Avala paathu ellam poocho." },
-        { time: 20, text: "Un kannadiyil naan, ennai thedi ponene," },
-        { time: 25, text: "Kannodu kannin vishayam theriyuma?" },
-        { time: 30, text: "Un mazhaiyil naan, kaatrai thedi nadandhen," },
-        { time: 35, text: "Kattrin oram, kadhalin moham." },
-        { time: 40, text: "Hey, raathiri raathiri radhai," },
-        { time: 45, text: "Enakku ipo venum bodhai." },
+        { time: 2, text: "Pesi pesi sudukadu aacho." },
+        { time: 4, text: "Cat-u talk-u, moon walk-u," },
+        { time: 6, text: "Avala paathu ellam poocho." },
+        { time: 8, text: "Un kannadiyil naan, ennai thedi ponene," },
+        { time: 10, text: "Kannodu kannin vishayam theriyuma?" },
+        { time: 12, text: "Un mazhaiyil naan, kaatrai thedi nadandhen," },
+        { time: 14, text: "Kattrin oram, kadhalin moham." },
+        { time: 16, text: "Hey, raathiri raathiri radhai," },
+        { time: 18, text: "Enakku ipo venum bodhai." },
+        { time: 20, text: "Takkaru takkaru damaaru," },
+        { time: 22, text: "Nee illama naanum sumaaru." },
+        { time: 24, text: "Oru vaarthai sol, naan vaazhven," },
+        { time: 26, text: "Oru silu silu vaarthai vaangi," },
+        { time: 28, text: "Kadhal ariven." },
+        { time: 30, text: "Podi podi paava kaari," },
+        { time: 32, text: "Nee thaane enakku sooniya kaari." },
+        { time: 34, text: "Right-u wrong-u, queen-u pei-u," },
+        { time: 36, text: "Unna paatha alaeyh gaali" },
+        { time: 38, text: "Nee vanthaal, mazhalai paadum," },
+        { time: 40, text: "Thunaiyaaga naan, un mela nenaipen thooral." },
+        { time: 42, text: "Mannippu thedi, marandhaalum," },
+        { time: 44, text: "Thirumbum vazhi illaye." },
+        { time: 46, text: "Hey, raathiri raathiri radhai," },
+        { time: 48, text: "Enakku ipo venum bodhai." },
         { time: 50, text: "Takkaru takkaru damaaru," },
-        { time: 55, text: "Nee illama naanum sumaaru." },
-        { time: 60, text: "Oru vaarthai sol, naan vaazhven," },
-        { time: 65, text: "Oru silu silu vaarthai vaangi," },
-        { time: 70, text: "Kadhal ariven." },
-        { time: 75, text: "Podi podi paava kaari," },
-        { time: 80, text: "Nee thaane enakku sooniya kaari." },
-        { time: 85, text: "Right-u wrong-u, queen-u pei-u," },
-        { time: 90, text: "Unna paatha alaeyh gaali" },
-        { time: 95, text: "Nee vanthaal, mazhalai paadum," },
-        { time: 100, text: "Thunaiyaaga naan, un mela nenaipen thooral." },
-        { time: 105, text: "Mannippu thedi, marandhaalum," },
-        { time: 110, text: "Thirumbum vazhi illaye." },
-        { time: 115, text: "Hey, raathiri raathiri radhai," },
-        { time: 120, text: "Enakku ipo venum bodhai." },
-        { time: 125, text: "Takkaru takkaru damaaru," },
-        { time: 130, text: "Nee illama naanum sumaaru" },
-        { time: 135, text: "Hey! Pencil lady, naa valakkuren thaadi," },
-        { time: 140, text: "Unnala aanen, eh ipo naanum KD." },
-        { time: 145, text: "Suthi vita bhambaram, kairu illaa thadhiram..." },
-        { time: 150, text: "Hey! Takkaru takkaru damaaru," },
-        { time: 155, text: "Nee illama naanum sumaaru." },
+        { time: 52, text: "Nee illama naanum sumaaru" },
+        { time: 54, text: "Hey! Pencil lady, naa valakkuren thaadi," },
+        { time: 56, text: "Unnala aanen, eh ipo naanum KD." },
+        { time: 58, text: "Suthi vita bhambaram, kairu illaa thadhiram..." },
+        { time: 60, text: "Hey! Takkaru takkaru damaaru," },
+        { time: 62, text: "Nee illama naanum sumaaru." },
     ];
 
     // Add lyrics to the container
@@ -104,9 +104,11 @@ document.addEventListener('DOMContentLoaded', function () {
         lyrics.forEach((line, index) => {
             const lyricElement = lyricsContainer.children[index];
             if (currentTime >= line.time && (index === lyrics.length - 1 || currentTime < lyrics[index + 1].time)) {
+                lyricElement.style.opacity = 1; // Fade in
                 lyricElement.style.color = '#1db954';
                 lyricElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
             } else {
+                lyricElement.style.opacity = 0; // Fade out
                 lyricElement.style.color = '#fff';
             }
         });

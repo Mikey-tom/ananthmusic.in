@@ -111,29 +111,33 @@ body {
 }
 
 #volumeControl {
-    width: 50%; /* Reduced width to make it smaller */
+    width: 50%; /* Adjust width as needed */
     background-color: #444;
-    border-radius: 2px;
+    border-radius: 50px; /* Make the track rounded */
     height: 4px;
-    position: relative; /* Added for centering */
+    position: relative; /* For better alignment */
 }
 
 #volumeControl::-webkit-slider-thumb {
     background-color: #1db954;
-    border-radius: 20%; /* Small rounded corners */
+    border-radius: 50%; /* Fully rounded thumb */
     cursor: pointer;
-    height: 10px; /* Reduced size */
-    width: 10px; /* Reduced size */
-    position: relative; /* Added for better alignment */
+    height: 20px; /* Size of the thumb */
+    width: 20px; /* Size of the thumb */
+    position: relative;
+    border: 2px solid #fff; /* Optional border for better visibility */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Optional shadow for depth */
 }
 
 #volumeControl::-moz-range-thumb {
     background-color: #1db954;
-    border-radius: 50%;
+    border-radius: 50%; /* Fully rounded thumb */
     cursor: pointer;
-    height: 10px; /* Reduced size */
-    width: 10px; /* Reduced size */
-    position: relative; /* Added for better alignment */
+    height: 20px; /* Size of the thumb */
+    width: 20px; /* Size of the thumb */
+    position: relative;
+    border: 2px solid #fff; /* Optional border for better visibility */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Optional shadow for depth */
 }
 
 .playback-speed {

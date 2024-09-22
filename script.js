@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
         { time: 9.5, text: "Un kannadiyil naan, ennai thedi ponene," },
         { time: 14.5, text: "Kannodu kannin vishayam theriyuma?" },
         { time: 19, text: "Un mazhaiyil naan, kaatrai thedi nadandhen," },
-        { time: 22, text: "Kattrin oram, kadhalin moham." },
+        { time: 20, text: "Kattrin oram, kadhalin moham." },
         { time: 25, text: "Hey, raathiri raathiri radhai," },
         { time: 26.5, text: "Enakku ipo venum bodhai." },
         { time: 28.5, text: "Takkaru takkaru damaaru," },
